@@ -1,29 +1,56 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router";
+import {
+  BrowserRouter,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Projects from "./pages/projects";
 import { Navbar } from "./components/navbar";
+import { AnimatePresence, motion } from "motion/react";
 
 export function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-        </Route>
-      </Routes>
+      <AnimatedRoutes />
     </BrowserRouter>
   );
 }
 
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <Routes location={location} key={location.pathname}>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  );
+};
+
 const Layout = () => {
+  const location = useLocation();
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <Outlet />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.key}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -10, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Outlet />
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
