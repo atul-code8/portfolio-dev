@@ -10,7 +10,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,19 +18,56 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { BluetoothIcon, PlusIcon } from "@phosphor-icons/react";
+import { CodeIcon, GlobeIcon, PlusIcon } from "@phosphor-icons/react";
+import { SEO } from "@/components/seo";
+
+const projectsData = [
+  {
+    title: "IX Store (E-commerce)",
+    description:
+      "A fullstack e-commerce application clothing store. Its built with React, Node.js, Express, and MongoDB. It features user authentication, product management, shopping cart, and order processing.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Video Conference Application",
+    description:
+      "A video conference application built with React, Node.js, Express, and MongoDB. It features user authentication, video conferencing, chat, and screen sharing.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Water Bottle ShowCase",
+    description:
+      "A spring water bottle showcase built with React, Node.js, Express, and MongoDB. It features user authentication, video conferencing, chat, and screen sharing.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "A luxury city bus",
+    description:
+      "A luxury city bus built with React, Node.js, Express, and MongoDB. It features user authentication, video conferencing, chat, and screen sharing.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
 
 const Projects = () => {
   return (
     <div className="p-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {Array.from({ length: 3 }).map((_, index) => (
-        <ProjectCard key={index} />
+      <SEO
+        title="Projects | Atul"
+        description="Showcase of Atul's projects including e-commerce, video conferencing, and more."
+        keywords={["Projects", "Portfolio", "Web Apps", "React"]}
+      />
+      {projectsData.map((project, index) => (
+        <ProjectCard key={index} project={project} />
       ))}
     </div>
   );
 };
 
-const ProjectCard = () => {
+const ProjectCard = ({ project }: { project: any }) => {
   return (
     <Card className="relative w-full max-w-sm mx-auto overflow-hidden pt-0">
       <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
@@ -42,11 +78,9 @@ const ProjectCard = () => {
         className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
       />
       <CardHeader>
-        <CardTitle>Observability Plus is replacing Monitoring</CardTitle>
-        <CardDescription>
-          Switch to the improved way to explore your data, with natural
-          language. Monitoring will no longer be available on the Pro plan in
-          November, 2025
+        <CardTitle className="truncate">{project.title}</CardTitle>
+        <CardDescription className="line-clamp-4">
+          {project.description}
         </CardDescription>
       </CardHeader>
       <CardFooter>
@@ -60,12 +94,12 @@ const ProjectCard = () => {
           <AlertDialogContent size="sm">
             <AlertDialogHeader>
               <AlertDialogMedia>
-                <BluetoothIcon />
+                {/* <BluetoothIcon /> */}
+                <CodeIcon />
               </AlertDialogMedia>
-              <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
+              <AlertDialogTitle>You want to see code?</AlertDialogTitle>
               <AlertDialogDescription>
-                Do you want to allow the USB accessory to connect to this
-                device?
+                Do you want to go to the repository?
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -74,9 +108,10 @@ const ProjectCard = () => {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-        <Badge variant="secondary" className="ml-auto">
-          Warning
-        </Badge>
+        <Button className="ml-auto">
+          <GlobeIcon weight="bold" data-icon="inline-start" />
+          Live Demo
+        </Button>
       </CardFooter>
     </Card>
   );
