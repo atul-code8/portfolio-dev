@@ -21,7 +21,6 @@ import {
   GithubLogo,
   LinkedinLogo,
   Envelope,
-  Star,
 } from "@phosphor-icons/react";
 
 // ============================================
@@ -761,85 +760,6 @@ const ProjectsSection = () => {
             <ArrowRight weight="bold" />
           </Link>
         </motion.div>
-      </div>
-    </section>
-  );
-};
-
-// ============================================
-// TESTIMONIALS SECTION
-// ============================================
-
-const testimonials = [
-  {
-    quote:
-      "Atul's attention to detail and technical expertise transformed our vision into reality. Highly recommended!",
-    author: "Sarah Johnson",
-    role: "CEO, TechStart",
-  },
-  {
-    quote:
-      "Working with Atul was a game-changer. The project was delivered on time with exceptional quality.",
-    author: "Michael Chen",
-    role: "Product Manager, InnovateCo",
-  },
-  {
-    quote:
-      "Brilliant problem-solver who brings both creativity and technical excellence to every project.",
-    author: "Emily Davis",
-    role: "CTO, DigitalFirst",
-  },
-];
-
-const TestimonialsSection = () => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section ref={ref} className="py-32 bg-muted/30">
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionTitle subtitle="Testimonials">What Clients Say</SectionTitle>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.author}
-              className="bg-card border border-border rounded-2xl p-8 relative"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              {/* Quote Icon */}
-              <div className="absolute -top-4 left-8">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-primary-foreground text-xl">"</span>
-                </div>
-              </div>
-
-              <div className="flex gap-1 mb-4 mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={16}
-                    weight="fill"
-                    className="text-yellow-500"
-                  />
-                ))}
-              </div>
-
-              <p className="text-muted-foreground mb-6 italic">
-                "{testimonial.quote}"
-              </p>
-
-              <div className="border-t border-border pt-4">
-                <div className="font-semibold">{testimonial.author}</div>
-                <div className="text-sm text-muted-foreground">
-                  {testimonial.role}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
