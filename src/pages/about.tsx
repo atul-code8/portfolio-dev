@@ -20,10 +20,10 @@ const About = () => {
       {/* Background Decor */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[30rem] h-[30rem] bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-120 h-120 bg-secondary/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10">
+      <div className="container max-w-7xl mx-auto px-6 md:px-12 py-16 relative z-10">
         <HeroSection />
         <SkillsSection />
         <ServicesSection />
@@ -75,9 +75,9 @@ const HeroSection = () => {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-primary via-secondary to-accent rotate-3 group-hover:rotate-6 transition-transform duration-500 shadow-2xl"
+          className="w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-linear-to-br from-primary via-secondary to-accent rotate-3 group-hover:rotate-6 transition-transform duration-500 shadow-2xl"
         />
-        <div className="absolute inset-0 bg-card rounded-2xl border border-border flex items-center justify-center -rotate-3 group-hover:-rotate-0 transition-transform duration-500 shadow-xl overflow-hidden">
+        <div className="absolute inset-0 bg-card rounded-2xl border border-border flex items-center justify-center -rotate-3 group-hover:rotate-0 transition-transform duration-500 shadow-xl overflow-hidden">
           {/* Placeholder for Profile Image or stylized content */}
           <Code size={64} weight="duotone" className="text-primary/50" />
         </div>
@@ -95,8 +95,8 @@ const SkillsSection = () => {
     },
     {
       icon: <Terminal size={32} />,
-      title: "Python Specialist",
-      desc: "Scripting, Automation, AI",
+      title: "Python Generalist",
+      desc: "Scripting, Django, AI",
     },
     {
       icon: <Stack size={32} />,
@@ -201,7 +201,7 @@ const ServicesSection = () => {
             transition={{ delay: idx * 0.1 }}
             className="flex items-start md:items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors"
           >
-            <div className="mt-1 md:mt-0 min-w-[2rem] w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center text-xs font-bold">
+            <div className="mt-1 md:mt-0 min-w-8 w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center text-xs font-bold">
               {idx + 1}
             </div>
             <div>
